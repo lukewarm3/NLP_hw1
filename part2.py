@@ -28,13 +28,6 @@ class RNNModel(nn.Module):
 			Return the updated hidden state and the most likely next symbol."""
 		raise NotImplementedError
 
-	def evaluate(self, data):
-		"""	TODO: Iterating over the sentences in the data, calculate next character prediction accuracy. 
-			Use `self.eval()` and `with torch.no_grad()` so that the model is not trained during evaluation.
-			Use self.predict() to get the predicted next character, and then check if it matches the real next character found in the data.
-			Divide the total correct predictions by the total number of characters to get the final accuracy."""
-		raise NotImplementedError		
-
 	def fit(self, data, lr=0.001, epochs=10):
 		"""	TODO: Fill in the code using PyTorch functions and other functions from part2.py and utils.py.
 			Most steps will only be 1 line of code. You may write it in the space below the step."""
@@ -84,6 +77,13 @@ class RNNModel(nn.Module):
 		#	5. Compute the average loss per character by dividing `total_loss / total_chars`.
 
 		#	6. For debugging, it will be helpful to print the average loss per character and the runtime after each epoch. Average loss per character should always decrease epoch to epoch and drop from about 3 to 1.2 over the 10 epochs.
+		raise NotImplementedError
+
+		def evaluate(self, data):
+		"""	TODO: Iterating over the sentences in the data, calculate next character prediction accuracy. 
+			Use `self.eval()` and `with torch.no_grad()` so that the model is not trained during evaluation.
+			Use self.predict() to get the predicted next character, and then check if it matches the real next character found in the data.
+			Divide the total correct predictions by the total number of characters to get the final accuracy."""
 		raise NotImplementedError
 
 if __name__ == '__main__':
