@@ -12,11 +12,7 @@ class NGramModel:
 		raise NotImplementedError
 
 	def start(self):
-		return ['<BOS>'] * (self.n - 2)
-		"""Because we add BOS and EOS in read_data():
-			* No extra context needed for unigram model (returns []).
-			* n-2 extra BOS tags needed for n>1 to provide context for the first symbol.
-		"""
+		return ['<BOS>'] * (self.n - 1) # Remember that read_data prepends one <BOS> tag. Depending on your implementation, you may need to remove or work around that. No n-gram should have exclusively <BOS> tags; context should be n-1 <BOS> tags and the first prediction should be of the first non-BOS token.
 
 	def fit(self, data):
 		"""TODO: 
@@ -31,7 +27,7 @@ class NGramModel:
 	def step(self, context):
 		"""Returns the distribution over possible next symbols. For unseen contexts, backs off to unigram distribution."""
 		context = self.start() + context
-		context = tuple(context[-(self.n - 2):]) # cap the context at length n-1
+		context = tuple(context[-(self.n - 1):]) # cap the context at length n-1
 		if context in self.probs:
 			return self.probs[context]
 		else:
