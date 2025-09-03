@@ -31,7 +31,7 @@ class NGramModel:
 	def step(self, context):
 		"""Returns the distribution over possible next symbols. For unseen contexts, backs off to unigram distribution."""
 		context = self.start() + context
-		context = tuple(context[-(self.n - 2):]) # cap the context at length n
+		context = tuple(context[-(self.n - 2):]) # cap the context at length n-1
 		if context in self.probs:
 			return self.probs[context]
 		else:
