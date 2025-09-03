@@ -12,7 +12,7 @@ class NGramModel:
 		raise NotImplementedError
 
 	def start(self):
-		return ['<BOS>'] * (self.n - 1) # Remember that read_data prepends one <BOS> tag. Depending on your implementation, you may need to remove or work around that. No n-gram should have exclusively <BOS> tags; context should be n-1 <BOS> tags and the first prediction should be of the first non-BOS token.
+		return ['<BOS>'] * (self.n - 1) # Remember that read_data prepends one <BOS> tag. Depending on your implementation, you may need to remove or work around that. No n-gram should have exclusively <BOS> tags; initial context should be n-1 <BOS> tags and the first prediction should be of the first non-BOS token.
 
 	def fit(self, data):
 		"""TODO: 
